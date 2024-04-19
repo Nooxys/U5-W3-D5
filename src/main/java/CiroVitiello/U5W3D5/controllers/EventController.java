@@ -32,7 +32,7 @@ public class EventController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAuthority('EVENT_ORGANIZER')")
+    @PreAuthorize("hasAnyAuthority('EVENT_ORGANIZER', 'ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     public Event save(@RequestBody @Validated NewEventDTO body, BindingResult validation) {
         if (validation.hasErrors()) {
@@ -42,7 +42,7 @@ public class EventController {
     }
 
     @PutMapping("/{eventId}")
-    @PreAuthorize("hasAuthority('EVENT_ORGANIZER')")
+    @PreAuthorize("hasAnyAuthority('EVENT_ORGANIZER', 'ADMIN')")
     public Event findByIdAndUpdate(@PathVariable long eventId, @RequestBody @Validated NewEventDTO body, BindingResult validation) {
         if (validation.hasErrors()) {
             throw new BadRequestException(validation.getAllErrors());
@@ -51,7 +51,7 @@ public class EventController {
     }
 
     @DeleteMapping("/{eventId}")
-    @PreAuthorize("hasAuthority('EVENT_ORGANIZER')")
+    @PreAuthorize("hasAnyAuthority('EVENT_ORGANIZER', 'ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void findByIdAndDelete(@PathVariable long eventId) {
         this.es.findByIdAndDelete(eventId);
