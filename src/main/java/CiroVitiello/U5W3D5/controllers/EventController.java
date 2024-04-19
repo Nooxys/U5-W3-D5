@@ -27,7 +27,7 @@ public class EventController {
     }
 
     @GetMapping("/{eventId}")
-    public Event findDeviceById(@PathVariable long eventId) {
+    public Event findEventsById(@PathVariable long eventId) {
         return es.findById(eventId);
     }
 

@@ -1,12 +1,14 @@
 package CiroVitiello.U5W3D5.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "reservations")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Reservation {
     @Id
@@ -20,4 +22,8 @@ public class Reservation {
     @JoinColumn(name = "event_id")
     private Event event;
 
+    public Reservation(User user, Event event) {
+        this.user = user;
+        this.event = event;
+    }
 }
