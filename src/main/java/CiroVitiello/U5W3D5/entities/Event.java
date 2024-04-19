@@ -22,7 +22,7 @@ public class Event {
     private LocalDate date;
     private String place;
     private int placesAvailable;
-    @OneToMany(mappedBy = "events")
+    @OneToMany(mappedBy = "event")
     @JsonIgnore
     private List<Reservation> reservations;
 }

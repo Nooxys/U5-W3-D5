@@ -16,7 +16,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 @Data
 @NoArgsConstructor
 @JsonIgnoreProperties({"password", "role", "authorities", "accountNonExpired", "credentialsNonExpired", "accountNonLocked", "enabled"})
@@ -32,7 +32,7 @@ public class User implements UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     private UserType role;
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Reservation> reservations;
 
