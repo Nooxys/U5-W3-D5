@@ -62,7 +62,7 @@ public class UserService {
         found.setName(body.name());
         found.setSurname(body.surname());
         found.setEmail(body.email());
-        found.setPassword(body.password());
+        found.setPassword(bcrypt.encode(body.password()));
         this.ud.save(found);
         return found;
     }
